@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Создание вкладок JavaScript</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<ul class="container--tabs">
+				<li class="tab tab--active">London</li>
+				<li class="tab">New York</li>
+				<li class="tab">Singapore</li>
+			</ul>
+
+			<div class="container--content">
+				<div class="content content--active">
+					<h2>London</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur doloribus necessitatibus possimus.</p>
+					<p><img src="london.jpg" width="396" /></p>
+				</div>
+				<div class="content">
+					<h2>NYC</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur doloribus necessitatibus possimus.</p>
+					<p><img src="nyc.jpg" width="396" /></p>
+				</div>
+				<div class="content">
+					<h2>Singapore</h2>
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam esse voluptas minus autem, veniam dolor, debitis consequuntur dignissimos libero quibusdam consequatur. Enim, pariatur deserunt. Officiis!</p>
+					<p><img src="sg.jpg" width="396" /></p>
+				</div>
+			</div>
+		</div>
+
+		
+		<script>
+
+			const tabs = document.querySelectorAll('.tab');
+			const contents = document.querySelectorAll('.content');
+
+			for(let i = 0; i < tabs.length; i++) {
+				tabs[i].addEventListener( 'click', (event) => {
+					
+					//delete class
+					let tabsCurrent = event.target.parentElement.children;
+					for (let j = 0; j < tabsCurrent.length; j++) {
+						tabsCurrent[j].classList.remove('tab--active')
+					}
+					
+					//add class
+					event.target.classList.add('tab--active');
+					
+					//delete content
+					let contentsCurrent = event.target.parentElement.nextElementSibling.children;
+					for (let k = 0; k < contentsCurrent.length; k++) {
+						contentsCurrent[k].classList.remove('content--active')
+					}
+					
+					//add content
+					contents[i].classList.add('content--active');
+
+				})
+			}
+
+		</script>
+	</body>
+</html>
